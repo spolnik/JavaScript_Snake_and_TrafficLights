@@ -1,0 +1,101 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Snake Tests</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" href="qunit.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="qunit.js"></script>
+    <script src="snake.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            module("Snake Initialization");
+
+            initGame();
+            Snake.instance.stop();
+
+            test("Snake after initialization should have right direction", function () {
+                equals(Snake.instance.direction, Enum.Direction.right, "We expect initial direction to be right");
+            });
+
+            test("Snake after initialization should have length equals to 3", function () {
+                equals(Snake.instance.length, 3, "We expect body length to be 3");
+            });
+
+            test("Snake after initialization should have position equals to [100,100]", function () {
+                var defaultPosition = 100;
+                equals(Snake.instance.body[0].x, defaultPosition, "We expect position x to be 100");
+                equals(Snake.instance.body[0].y, defaultPosition, "We expect position y to be 100");
+            });
+
+            test("Snake after initialization and then stopping him should not run", function () {
+                ok(!Snake.instance.running, "We expect snake doesn't run after stopping him");
+            });
+
+            test("Square side size after initialization should equals to 10", function () {
+                equals(Snake.instance.squareSize, 10, "We expect square side size to be 10");
+            });
+
+            test("Snake after initialization should have initial interval equals to 150", function () {
+                equals(Snake.instance.initialInterval, 150, "We expect snake initial interval to be 150");
+            });
+
+            test("Snake after initialization should have score equals to 0", function () {
+                equals(Snake.instance.score, 0, "We expect snake score to be 0");
+            });
+
+            test("Food after initialization should have exist", function () {
+                ok(Snake.instance.foodPosition.x > 0, "We expect food to be on the board - x > 0");
+                ok(Snake.instance.foodPosition.x < Snake.instance.canvas.width, "We expect food to be on the board - x < board width");
+                ok(Snake.instance.foodPosition.y > 0, "We expect food to be on the board - y > 0");
+                ok(Snake.instance.foodPosition.y < Snake.instance.canvas.height, "We expect food to be on the board - y < board height");
+                ok(Snake.instance.foodPosition.x != Snake.instance.position.x, "We expect food to be on the board - food x != snake x");
+                ok(Snake.instance.foodPosition.x != Snake.instance.position.y, "We expect food to be on the board - food y != snake y");
+            });
+
+            module("Snake During Game");
+
+            test("Simple test", function () {
+                ok(true, "simple test");
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <h1 id="qunit-header">
+        QUnit - Snake Game Tests</h1>
+    <h2 id="qunit-banner">
+    </h2>
+    <div id="qunit-testrunner-toolbar">
+    </div>
+    <h2 id="qunit-userAgent">
+    </h2>
+    <ol id="qunit-tests">
+    </ol>
+    <div id="qunit-fixture">
+        <div id="page">
+            <div id='score_container'>
+                Score: <span id="score">0</span>
+            </div>
+            <div id='playPanel'>
+                <button id='pauseButton'>
+                    Pause</button>
+            </div>
+            <div id='pausePanel'>
+                <button id='restartAfterPauseButton'>
+                    Restart</button>
+                <button id='resumeButton'>
+                    Resume</button>
+            </div>
+            <div id='restartPanel'>
+                <button id='restartButton'>
+                    Restart</button>
+            </div>
+            <canvas id="canvas" height="600px" width="600px">
+            <p>Your browser doesn't support canvas.</p>
+        </canvas>
+        </div>
+    </div>
+</body>
+</html>

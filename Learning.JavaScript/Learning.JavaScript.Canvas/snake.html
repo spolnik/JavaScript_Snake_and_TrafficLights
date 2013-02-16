@@ -1,0 +1,93 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Snake Game 2.0</title>
+    <script type="text/javascript" src="http://www.ponticstar.com/js/projects/burning-words-1.0-min.js"></script>
+    <link href="snake.css" rel="stylesheet" type="text/css" />
+    <script src='snake.js' type='text/javascript'></script>
+    <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.11/themes/ui-darkness/jquery-ui.css"
+        type="text/css" media="all" />
+    <link rel="stylesheet" href="http://static.jquery.com/ui/css/demo-docs-theme/ui.theme.css"
+        type="text/css" media="all" />
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.1.min.js" type="text/javascript"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.11/jquery-ui.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(initGame);
+
+        $(function () {
+            $("button").button();
+            $("#dialog-modal").css('display', 'none');
+        });
+        
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div id="leftBar">
+            <script type="text/javascript">
+                var burning_words = new PonticStar.BurningWords;
+                burning_words.show("Snake Game 2.0", "FFFFFF", "Georgia", 25, "222222", 0, "normal");
+            </script>
+            <br />
+            <br />
+            
+            <div id='playPanel'>
+                <button id='pauseButton' class="panelButton">
+                    Pause</button>
+            </div>
+            <div id='pausePanel'>
+                <button id='resumeButton' class="panelButton">
+                    Resume</button>
+                <button id='restartAfterPauseButton' class="panelButton">
+                    Restart</button>
+            </div>
+            <div id='restartPanel'>
+                <button id='restartButton' class="panelButton">
+                    Restart</button>
+            </div>
+            <div id="highscore">
+            </div>            
+        </div>
+        <div id="content">
+            <canvas id="canvas" height="600px" width="600px">
+                <p>Your browser doesn't support canvas.</p>
+            </canvas>
+            <div id="footer">
+                <div id='score_container'>
+                    <span id="scoreLabel" >Level: <span id="level">1</span>Score: <span id="score">0</span></span>
+                </div>
+                <span id="blogUrl">© 2011 nprogramming.wordpress.com</span>
+            </div>
+        </div>
+        <div id="rightBar">
+            <div id="highscore-contain" class="ui-widget">
+                <h1>
+                    Highscore:</h1>
+                <table id="users" class="ui-widget ui-widget-content">
+                    <thead>
+                        <tr class="ui-widget-header ">
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Score
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="scoreBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="dialog-modal" title="Snake Game 2.0">
+        <p id="dialogMessage" class="validateTips">Name is required.</p>
+        <label for="name" class="dialogLabel">
+            Name</label>
+        <input type="text" name="name" id="name" class="ui-widget-content ui-corner-all dialogInput" />
+    </div>
+</body>
+</html>

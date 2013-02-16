@@ -1,0 +1,94 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Traffic Lights</title>
+    <style type="text/css">
+        #page
+        {
+            width: 300px;
+            height: 500px;
+            margin: auto;
+        }
+        #canvas:hover
+        {
+            cursor: crosshair;
+            background-color: #191919;
+        }
+        #canvas
+        {
+            background-color: #252525;
+        }
+        body
+        {
+            background: #222222;
+            color: white;
+        }
+    </style>
+    <script type="text/javascript">
+        var RED = "#FF0000";
+        var YELLOW = "#FFFF00";
+        var GREEN = "#00FF00";
+        var DARK_RED = "#380000";
+        var DARK_YELLOW = "#383800";
+        var DARK_GREEN = "#003800";
+
+        var X_ALL = 150;
+        var Y_RED = 100;
+        var Y_YELLOW = Y_RED + 150;
+        var Y_GREEN = Y_YELLOW + 150;
+
+        var trafficLightsStateMachine;
+
+        function TrafficLightsStateMachine() {
+            this.state = 0;
+            this.stateMachine = new Array();
+
+            this.stateMachine[0] = function () { drawCircles(DARK_RED, YELLOW, DARK_GREEN); };
+            this.stateMachine[1] = function () { drawCircles(RED, DARK_YELLOW, DARK_GREEN); };
+            this.stateMachine[2] = function () { drawCircles(RED, YELLOW, DARK_GREEN); };
+            this.stateMachine[3] = function () { drawCircles(DARK_RED, DARK_YELLOW, GREEN); };
+
+
+            this.process = function() {
+                this.stateMachine[this.state]();
+                this.state = (this.state + 1) % this.stateMachine.length;
+            };
+
+            this.drawCircle = function(canvas, color, x, y) {
+                var context = canvas.getContext('2d');
+
+                context.strokeStyle = "#000000";
+                context.fillStyle = color;
+                context.beginPath();
+                context.arc(x, y, 50, 0, Math.PI * 2, true);
+                context.closePath();
+                context.stroke();
+                context.fill();
+            };
+        }
+        
+        function drawCircles(first, second, third) {
+            var id = 'canvas';
+            var canvas = document.getElementById(id);
+
+            if (canvas.getContext) {
+                trafficLightsStateMachine.drawCircle(canvas, first, X_ALL, Y_RED);
+                trafficLightsStateMachine.drawCircle(canvas, second, X_ALL, Y_YELLOW);
+                trafficLightsStateMachine.drawCircle(canvas, third, X_ALL, Y_GREEN);
+            }
+        }
+        
+        function init() {
+            trafficLightsStateMachine = new TrafficLightsStateMachine();
+            drawCircles(DARK_RED, DARK_YELLOW, GREEN);
+        }
+    </script>
+</head>
+<body onload="init()">
+    <div id="page" onclick="trafficLightsStateMachine.process()" title="Please, press button.">
+        <canvas id="canvas" height="500px" width="300px">
+            <p>Your browser doesn't support canvas.</p>
+        </canvas>
+    </div>
+</body>
+</html>

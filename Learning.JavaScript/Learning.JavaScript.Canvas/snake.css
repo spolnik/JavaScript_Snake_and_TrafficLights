@@ -1,0 +1,131 @@
+﻿#container
+{
+    width: 1000;
+    height: 700px;
+}
+#leftBar, #rightBar
+{
+    float: left;
+    width: 200px;
+    height: 700px;
+}
+#rightBar
+{
+    float: left;
+    width: 200px;
+    height: 700px;
+}
+
+#content
+{
+    float: left;
+    width: 600px;
+    height: 700px;
+}
+
+#canvas
+{
+    background-color: #303030;
+    border: solid 1px black;
+}
+body
+{
+    background: #222222;
+    color: #eee;
+}
+canvas
+{
+    -webkit-box-shadow: 0 0 20px #000;
+    -moz-box-shadow: 0 0 20px #000;
+    box-shadow: 0 0 20px #000;
+}
+body #pausePanel, body #restartPanel
+{
+    display: none;
+}
+#scoreLabel
+{
+    float: left;
+}
+#blogUrl
+{
+    float: right;
+}
+#scoreLabel, #blogUrl
+{
+    line-height: 1.4;
+    font-family: Segoe UI, Arial, sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #EEE;
+}
+#score, #level
+{
+    color: #0f0;
+    margin-right: 10px;
+}
+.panelButton
+{
+    width: 186px;
+}
+.dialogLabel, .dialogInput
+{
+    display: block;
+}
+.dialogInput
+{
+    margin-bottom: 12px;
+    width: 95%;
+    padding: .4em;
+}
+.ui-dialog
+{
+    padding: .3em;
+}
+.dialogMessage
+{
+    border: 1px solid transparent;
+    padding: 0.3em;
+    margin-bottom: 12px;
+}
+
+h1
+{
+    font-size: 1.2em;
+    margin: .5em 0;
+}
+
+div#highscore-contain
+{
+    font-size: 70%;
+    float: right;
+    width: 190px;
+    margin: 0px 0 20px 0;
+}
+div#highscore-contain table
+{
+    margin: 1em 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+div#highscore-contain table td, div#highscore-contain table th
+{
+    border: 1px solid #000;
+    padding: .6em 10px;
+    text-align: left;
+}
+.validateTips
+{
+    border: 1px solid transparent;
+    padding: 0.2em;
+    font-size: 70%;
+}
+.ui-dialog .ui-state-error
+{
+    padding: .3em;
+}
+.bestScore
+{
+    font-weight: bold;
+    color: #0f0;
+}
